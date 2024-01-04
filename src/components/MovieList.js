@@ -2,12 +2,10 @@ import React from 'react'
 import MovieCard from './MovieCard'
 
 const MovieList = ({ title, movies }) => {
-    console.log("the data is movies ", movies)
-    // console.log(title)
     return (
         <div className=''>
 
-            <h1 className='text-white text-5xl'>{title}</h1>
+            <h1 className='text-white text-2xl md:text-5xl'>{title}</h1>
 
             <div className='flex  overflow-x-auto '>
 

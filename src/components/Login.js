@@ -58,7 +58,6 @@ const Login = () => {
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    console.log(errorCode, errorMessage);
                     // ..
                 });
 
@@ -96,29 +95,29 @@ const Login = () => {
         <div className=' '>
             <Header />
 
-            <div className="bg-[url('../public/assets/netflix-banner.jpg')]  h-full  w-full flex  justify-center items-center ">
+            <div className="bg-black md:bg-[url('../public/assets/netflix-banner.jpg')]  h-full  w-full flex  justify-center items-center ">
 
-                <div className='w-full flex justify-center bg-black bg-opacity-60'>
+                <div className='w-full flex justify-center  md:bg-black md:bg-opacity-60'>
 
-                    <form onSubmit={submitHandler} className='w-[35%]  bg-black bg-opacity-75 flex flex-col justify-center rounded-[.25rem] mt-32 '>
-                        <h1 className='text-white pl-16 text-3xl font-semibold pb-10 pt-10'>{isSignin ? 'Sign In' : 'Sign Up'}</h1>
-                        <div className='flex flex-col justify-center items-center'>
+                    <form onSubmit={submitHandler} className='w-full md:w-[35%]   md:bg-black md:bg-opacity-75 flex flex-col justify-center rounded-[.25rem] mt-10 md:mt-32 '>
+                        <h1 className='text-white pl-5 md:pl-16 text-3xl font-semibold pb-10 pt-10'>{isSignin ? 'Sign In' : 'Sign Up'}</h1>
+                        <div className='flex flex-col md:justify-center items-center '>
 
-                            {!isSignin && (<input ref={name} type='text' placeholder='Enter your name' className='w-[66%] p-2 m-2 rounded-[.25rem] py-3 mb-7 bg-[#333333] text-white font-semibold ' />)
+                            {!isSignin && (<input ref={name} type='text' placeholder='Enter your name' className='w-[90%] md:w-[66%] md:p-2 md:m-2 rounded-[.25rem] py-3 mb-7 bg-white md:bg-[#333333] md:text-white text-black font-semibold ' />)
 
                             }
                             <div className='w-full flex flex-col justify-center items-center '>
 
-                                <input ref={email} type='text' placeholder='Email or phone number' className='w-[66%] p-2  m-2 rounded-[.25rem] py-3  bg-[#333333] text-white font-semibold ' />
-                                <p className='text-[#e87c03]  text-sm  w-[70%] pl-2'>{errorMessage}</p>
+                                <input ref={email} type='text' placeholder='Email or phone number' className='w-[90%] md:w-[66%] p-2  m-2 rounded-[.25rem] py-3 bg-white md:bg-[#333333] text-black md:text-white font-semibold ' />
+                                <p className='text-[#e87c03]  text-sm w-[90%]  md:w-[70%] pl-2'>{errorMessage}</p>
 
                             </div>
 
                             <div className='w-full flex flex-col justify-center items-center mb-10'>
-                                <input ref={password} type='text' placeholder='Password' className='w-[66%] p-2 m-2 rounded-[.25rem] py-3  bg-[#333333] text-white font-semibold' />
-                                <p className='text-[#e87c03]   w-[70%] text-sm pl-2'>{errorMessage}</p>
+                                <input ref={password} type='text' placeholder='Password' className='w-[90%] md:w-[66%] p-2 m-2 rounded-[.25rem] py-3 bg-white md:bg-[#333333] md:text-white text-black font-semibold' />
+                                <p className='text-[#e87c03] w-[90%]  md:w-[70%] text-sm pl-2'>{errorMessage}</p>
                             </div>
-                            <button className='w-[66%] p-2 py-3 m-2 text-white font-bold bg-[#e50914]  rounded-[.25rem]' onClick={handleButtonClick} >{isSignin ? 'Sign In' : 'Sign Up'}</button>
+                            <button className='w-[90%] md:px-0 md:w-[66%] md:p-2 py-3 m-2 text-white font-bold bg-[#e50914]  rounded-[.25rem]' onClick={handleButtonClick} >{isSignin ? 'Sign In' : 'Sign Up'}</button>
                             <div className='flex gap-[6rem] mb-3'>
                                 <div>
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { signOut } from "firebase/auth";
 import { auth } from '../utils/firebase'
 import { useNavigate } from 'react-router-dom';
@@ -16,6 +16,8 @@ import { changeLanguage } from '../utils/configSlice';
 
 const Browse = () => {
     const showGptSeacrh = useSelector(store => store.gpt.showGptSearch)
+
+    const [menuToggle, setMenuToggle] = useState(false)
 
 
     const dispatch = useDispatch()
@@ -50,12 +52,26 @@ const Browse = () => {
         dispatch(changeLanguage(e.target.value))
     }
 
+    const handleSlider = () => {
+        setMenuToggle(!menuToggle)
+
+    }
+
+
 
     return (
-        <section>
+        <section className=''>
+            {menuToggle && <div className=' md:hidden flex flex-col items-center pt-20  text-white  absolute  h-[60%] bg-slate-800 w-[50%]'>
+                <ul className='flex flex-col items-start w-full pl-5'>
+                    <li className='text-white mb-2' onClick={handleSignout}>Sign Out</li>
+                </ul>
+            </div>}
             <div className='flex justify-between items-center w-full z-20  px-4 absolute'>
-                <img src={LOGO} alt="Logo" className='h-24 w-52' />
-                <div className='flex gap-5'>
+                <div className='block md:hidden'>
+                    <i className="fa-solid fa-bars text-white text-3xl" onClick={handleSlider}></i>
+                </div>
+                <img src={LOGO} alt="Logo" className='md:h-24 md:w-52 h-16 w-32 md:-ml-0 -ml-16' />
+                <div className='flex md:gap-5 gap-0'>
                     {/* Dynamically fetching the languge and mapping */}
                     {showGptSeacrh && <select className='py-1 px-3' onChange={
                         handleLanguageChange
@@ -65,9 +81,9 @@ const Browse = () => {
                         }
                     </select>}
                     <div>
-                        <button onClick={handleGPTSearchClick} className='text-white bg-red-600 py-2 px-5 font-bold shadow-sm'>{showGptSeacrh ? "Home Page" : "GPT Search"}</button>
+                        <button onClick={handleGPTSearchClick} className='text-white md:bg-red-600 py-2 px-5 font-bold shadow-sm'>{showGptSeacrh ? (<i class="fa-solid fa-house"></i>) : "GPT Search"}</button>
                     </div>
-                    <button className='text-white font-bold' onClick={handleSignout}>
+                    <button className='text-white font-bold md:block hidden' onClick={handleSignout}>
                         Sign Out
                     </button>
                 </div>
